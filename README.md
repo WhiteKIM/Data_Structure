@@ -11,7 +11,7 @@
 1. Stack
 2. Heap
 3. Graph
-4.
+4. List
 5.
 
 ## 정렬
