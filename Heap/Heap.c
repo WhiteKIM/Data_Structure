@@ -1,27 +1,26 @@
 /*
-* @ 5413970 ÄÄÇ»ÅÍ°øÇÐ°ú ±è°æ±Ô
 * @ 2020.4.21
-* @ ÃÖ¼Ò ¿ì¼±¼øÀ§ Å¥ ¹× ÇãÇÁ¸¸ ¿¬»ê Á¤ÀÇ ±¸Çö
+* @ ìµœì†Œ ìš°ì„ ìˆœìœ„ í ë° í—ˆí”„ë§Œ ì—°ì‚° ì •ì˜ êµ¬í˜„
 */
 #include <stdio.h>
 #include <stdlib.h>
 #include "Heap.h"
 
-//Heap »ý¼ºÇÔ¼ö
+//Heap ìƒì„±í•¨ìˆ˜
 Heap* create()
 {
 	return (Heap*)malloc(sizeof(Heap));
 }
 
-//Heap ÃÊ±âÈ­, Èü »çÀÌÁî¸¦ 0À¸·Î ¼³Á¤
+//Heap ì´ˆê¸°í™”, íž™ ì‚¬ì´ì¦ˆë¥¼ 0ìœ¼ë¡œ ì„¤ì •
 void init(Heap* h)
 {
 	h->heap_size = 0;
 }
 
-//ÃÖ¼Ò¿ì¼±¼øÀ§ Å¥¿¡ µ¥ÀÌÅÍ¸¦ ³Ö´Â ÇÔ¼ö
-//°ªÀ» ºñ±³ÇÏ¿© ÀÔ·ÂµÈ µ¥ÀÌÅÍ°¡ ÀÛÀ¸¸é ÇöÀç ¹è¿­ÀÇ µ¥ÀÌÅÍ À§Ä¡ Á¶Á¤
-//Á¶Á¤ÀÌ ³¡³ª¸é Èü¿¡ µ¥ÀÌÅÍ ÀÔ·Â
+//ìµœì†Œìš°ì„ ìˆœìœ„ íì— ë°ì´í„°ë¥¼ ë„£ëŠ” í•¨ìˆ˜
+//ê°’ì„ ë¹„êµí•˜ì—¬ ìž…ë ¥ëœ ë°ì´í„°ê°€ ìž‘ìœ¼ë©´ í˜„ìž¬ ë°°ì—´ì˜ ë°ì´í„° ìœ„ì¹˜ ì¡°ì •
+//ì¡°ì •ì´ ëë‚˜ë©´ íž™ì— ë°ì´í„° ìž…ë ¥
 void insert_min_heap(Heap* h, element item)
 {
 	int i = ++(h->heap_size);
@@ -34,8 +33,8 @@ void insert_min_heap(Heap* h, element item)
 }
 
 
-//Èü¿¡¼­ µ¥ÀÌÅÍ¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
-//µ¥ÀÌÅÍ°¡ Á¦°ÅµÇ¸é ÈüÀÇ ±¸Á¶°ú º¯ÇÒ ¼ö ÀÖÀ¸¹Ç·Î ±×¿¡ ´ëÇÑ ¿¬»ê ÁøÇà
+//íž™ì—ì„œ ë°ì´í„°ë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜
+//ë°ì´í„°ê°€ ì œê±°ë˜ë©´ íž™ì˜ êµ¬ì¡°ê³¼ ë³€í•  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ ê·¸ì— ëŒ€í•œ ì—°ì‚° ì§„í–‰
 element delete_min_heap(Heap* h)
 {
 	int parent;
@@ -65,7 +64,7 @@ element delete_min_heap(Heap* h)
 	return item;
 }
 
-//Æ®¸® »ý¼º
+//íŠ¸ë¦¬ ìƒì„±
 TreeNode* makeTree(TreeNode* left, TreeNode* right)
 {
 	TreeNode* node = (TreeNode*)malloc(sizeof(TreeNode));
@@ -74,7 +73,7 @@ TreeNode* makeTree(TreeNode* left, TreeNode* right)
 	return node;
 }
 
-//»ý¼ºµÈ Ã÷¸® Á¦°Å
+//ìƒì„±ëœ ì¸ ë¦¬ ì œê±°
 void destoryTree(TreeNode* root)
 {
 	if (root == NULL)
@@ -86,13 +85,13 @@ void destoryTree(TreeNode* root)
 	free(root);
 }
 
-//Æ®¸®ÀÇ ÀÌÆÄ¸® ³ëµåÀÏ ¶§ ¹ÝÈ¯
+//íŠ¸ë¦¬ì˜ ì´íŒŒë¦¬ ë…¸ë“œì¼ ë•Œ ë°˜í™˜
 int is_leaf(TreeNode* root)
 {
 	return !(root->left) && !(root->right);
 }
 
-//»ý¼ºµÈ ÄÚµå Ãâ·Â
+//ìƒì„±ëœ ì½”ë“œ ì¶œë ¥
 void printArray(int code[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -102,8 +101,8 @@ void printArray(int code[], int n)
 	printf("\n");
 }
 
-//ÄÚµå¸¦ »ý¼ºÇÏ°í Ãâ·ÂÇÏ´Â ÇÔ¼ö
-//ÁÂÃø ³ëµå´Â 0, ¿ìÃø ³ëµå´Â 1·Î ¼³Á¤ÇÏ¿© ³»·Á°¡¸ç ÄÚµå¸¦ »ý¼º
+//ì½”ë“œë¥¼ ìƒì„±í•˜ê³  ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
+//ì¢Œì¸¡ ë…¸ë“œëŠ” 0, ìš°ì¸¡ ë…¸ë“œëŠ” 1ë¡œ ì„¤ì •í•˜ì—¬ ë‚´ë ¤ê°€ë©° ì½”ë“œë¥¼ ìƒì„±
 void printCode(TreeNode * root, int code[], int top)
 {
 	if (root->left)
@@ -123,9 +122,9 @@ void printCode(TreeNode * root, int code[], int top)
 	}
 }
 
-//ÇãÇÁ¸¸ Æ®¸®¸¦ ±¸¼ºÇÏ´Â ¿¬»êÀ» ÁøÇàÇÒ ÇÔ¼ö
-//Æ®¸®¸¦ ¸ÕÀú »ý¼ºÇÏ°í ¹è¿­¿¡ ÀúÀåÇÑ µ¥ÀÌÅÍ¸¦ ÀÔ·Â
-//ÃÖÁ¾ÀûÀ¸·Î »ý¼ºµÈ ÄÚµå¸¦ Ãâ·ÂÇÏ°í Æ®¸® Á¦°Å
+//í—ˆí”„ë§Œ íŠ¸ë¦¬ë¥¼ êµ¬ì„±í•˜ëŠ” ì—°ì‚°ì„ ì§„í–‰í•  í•¨ìˆ˜
+//íŠ¸ë¦¬ë¥¼ ë¨¼ì € ìƒì„±í•˜ê³  ë°°ì—´ì— ì €ìž¥í•œ ë°ì´í„°ë¥¼ ìž…ë ¥
+//ìµœì¢…ì ìœ¼ë¡œ ìƒì„±ëœ ì½”ë“œë¥¼ ì¶œë ¥í•˜ê³  íŠ¸ë¦¬ ì œê±°
 void huffmanTree(int freq[], char list[], int n)
 {
 	TreeNode* node;
