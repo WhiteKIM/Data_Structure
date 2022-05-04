@@ -3,44 +3,44 @@
 
 #define MAX_SIZE 100
 
-//arrÀº °¢ Á¤Á¡¿¡ ´ëÇÑ ´ëÇ¥°ª, node´Â È­¸é¿¡ ¾î¶² ¼±ÀÌ ¿¬°áµÇ¾ú´ÂÁö Ç¥½Ã
+//arrì€ ê° ì •ì ì— ëŒ€í•œ ëŒ€í‘œê°’, nodeëŠ” í™”ë©´ì— ì–´ë–¤ ì„ ì´ ì—°ê²°ë˜ì—ˆëŠ”ì§€ í‘œì‹œ
 int arr[] = {0,1,2,3,4,5,6};
 int** node;
 
-//±¸Á¶Ã¼ ¼±¾ğ °£¼±ºÎºĞ
+//êµ¬ì¡°ì²´ ì„ ì–¸ ê°„ì„ ë¶€ë¶„
 typedef struct {
-	int weight;	//°¡ÁßÄ¡
-	int start;	//½ÃÀÛÁ¡
-	int end;	//Á¾Á¡
+	int weight;	//ê°€ì¤‘ì¹˜
+	int start;	//ì‹œì‘ì 
+	int end;	//ì¢…ì 
 }element;
 
-//±¸Á¶Ã¼ Èü ¼±¾ğ
+//êµ¬ì¡°ì²´ í™ ì„ ì–¸
 typedef struct
 {
-	element heap[MAX_SIZE];	//°£¼± ¹è¿­
-	int size;	//ÈüÀÇ Å©±â
+	element heap[MAX_SIZE];	//ê°„ì„  ë°°ì—´
+	int size;	//í™ì˜ í¬ê¸°
 }Heap;
 
-//Èü µ¿Àû »ı¼º
+//í™ ë™ì  ìƒì„±
 Heap* create()
 {
 	return (Heap*)malloc(sizeof(Heap));
 }
 
-//»ç¿ëÇÏÁö ¾ÊÀ½, Èü Å©±â º¯°æ
+//ì‚¬ìš©í•˜ì§€ ì•ŠìŒ, í™ í¬ê¸° ë³€ê²½
 Heap* changeSize(int size)
 {
 	return (Heap*)malloc(sizeof(Heap));
 }
 
-//Èü ÃÊ±âÈ­, ÈüÀÇ Å©±â´Â 0¿¡¼­ºÎÅÍ ½ÃÀÛ
+//í™ ì´ˆê¸°í™”, í™ì˜ í¬ê¸°ëŠ” 0ì—ì„œë¶€í„° ì‹œì‘
 void init(Heap* h)
 {
 	h->size = 0;
 }
 
-//Èü¿¡ °ª ³Ö±â, element¸¦ ¹Ş¾Æ Èü¿¡ ÀúÀåÇÔ
-//elementÀÇ °¡ÁßÄ¡¿Í ºñ±³ÇÏ¿© ÀÛÀº °ªÀÌ ¾Õ¿¡ ¿È
+//í™ì— ê°’ ë„£ê¸°, elementë¥¼ ë°›ì•„ í™ì— ì €ì¥í•¨
+//elementì˜ ê°€ì¤‘ì¹˜ì™€ ë¹„êµí•˜ì—¬ ì‘ì€ ê°’ì´ ì•ì— ì˜´
 void insert(Heap* h, element item)
 {
 	int count = 0;
@@ -54,8 +54,8 @@ void insert(Heap* h, element item)
 	h->heap[count] = item;
 }
 
-//Èü¿¡ °ªÀ» ³Ö±âÀüelement¿¡ °¢ °ªÀ» ÀúÀå
-//°¢ Á¡°ú °¡ÁßÄ¡¸¦ ¹ŞÀº ÈÄ Èü¿¡ ÀúÀåÇÏ´Â ÇÔ¼ö ½ÇÇà
+//í™ì— ê°’ì„ ë„£ê¸°ì „elementì— ê° ê°’ì„ ì €ì¥
+//ê° ì ê³¼ ê°€ì¤‘ì¹˜ë¥¼ ë°›ì€ í›„ í™ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜ ì‹¤í–‰
 void insert_edge(Heap* h, int u, int v, int weight)
 {
 	element ment;
@@ -65,8 +65,8 @@ void insert_edge(Heap* h, int u, int v, int weight)
 	insert(h, ment);
 }
 
-//°ªÀ» Èü¿¡¼­ »©¿À´Â ÇÔ¼ö
-//°ªÀÇ °¡ÁßÄ¡¸¦ ºñ±³ÇÏ¿© ÀÛÀº °ªºÎÅÍ ³ª¿È
+//ê°’ì„ í™ì—ì„œ ë¹¼ì˜¤ëŠ” í•¨ìˆ˜
+//ê°’ì˜ ê°€ì¤‘ì¹˜ë¥¼ ë¹„êµí•˜ì—¬ ì‘ì€ ê°’ë¶€í„° ë‚˜ì˜´
 element delete(Heap* h)
 {
 	int parent;
@@ -95,8 +95,8 @@ element delete(Heap* h)
 	return item;
 }
 
-//»ç¿ëÇÏÁö ¾ÊÀ½, Èü Á¤·Ä ÇÔ¼ö
-//°ªÀÌ Á¦´ë·Î Á¤·ÄµÇÁö ¾Ê¾Æ »ç¿ëÇÏÁö ¾Ê¾ÒÀ½
+//ì‚¬ìš©í•˜ì§€ ì•ŠìŒ, í™ ì •ë ¬ í•¨ìˆ˜
+//ê°’ì´ ì œëŒ€ë¡œ ì •ë ¬ë˜ì§€ ì•Šì•„ ì‚¬ìš©í•˜ì§€ ì•Šì•˜ìŒ
 Heap* heapsort(Heap* h)
 {
 	Heap* temp_heap;
@@ -121,7 +121,7 @@ Heap* heapsort(Heap* h)
 	return temp_heap;
 }
 
-//Á¡ÀÌ ·çÆ®ÀÇ ´ëÇ¥°ª°ú µ¿ÀÏÇÑÁö ºñ±³ ¸Â´Ù¸é ´ëÇ¥°ª ¹İÈ¯ ¾Æ´Ï¸é Àç±ÍÀûÀ¸·Î È£Ãâ
+//ì ì´ ë£¨íŠ¸ì˜ ëŒ€í‘œê°’ê³¼ ë™ì¼í•œì§€ ë¹„êµ ë§ë‹¤ë©´ ëŒ€í‘œê°’ ë°˜í™˜ ì•„ë‹ˆë©´ ì¬ê·€ì ìœ¼ë¡œ í˜¸ì¶œ
 int find(int u)
 {
 	if (u != arr[u])
@@ -131,8 +131,8 @@ int find(int u)
 	return arr[u];
 }
 
-//U,V°ªÀ» ¹Ş¾Æ¿Í ´ëÇ¥°ªÀ» ºñ±³ÇÏ¸ç
-//´ëÇ¥°ªÀÌ °°´Ù¸é ¿¬°áµÇ¾îÀÖÀ½
+//U,Vê°’ì„ ë°›ì•„ì™€ ëŒ€í‘œê°’ì„ ë¹„êµí•˜ë©°
+//ëŒ€í‘œê°’ì´ ê°™ë‹¤ë©´ ì—°ê²°ë˜ì–´ìˆìŒ
 void Union(int u, int v)
 {
 	int root1 = find(u);
@@ -142,7 +142,7 @@ void Union(int u, int v)
 
 
 /*
-* ÃÖ¼Ò½ÅÀåÆ®¸® ¿¬»ê ½ÃÀÛ
+* ìµœì†Œì‹ ì¥íŠ¸ë¦¬ ì—°ì‚° ì‹œì‘
 */
 void kruskal(Heap * h, int N)
 {
@@ -168,7 +168,7 @@ void kruskal(Heap * h, int N)
 			index++;
 		}
 	}
-	printf("°¡ÁßÄ¡´Â %d \n", cost);
+	printf("ê°€ì¤‘ì¹˜ëŠ” %d \n", cost);
 }
 
 int main(void)
@@ -197,7 +197,7 @@ int main(void)
 	kruskal(heap, 6);
 	for (int i = 0; i < 5; i++)
 	{
-		printf("%d¹øÂ° ", i+1);
+		printf("%dë²ˆì§¸ ", i+1);
 		for (int j = 0; j < 2; j++)
 		{
 			printf(" %d ", node[i][j]);
