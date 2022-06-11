@@ -12,11 +12,8 @@
 2. Heap
 3. Graph
 4. List
-5.
+5. Deque
 
 ## 정렬
-1.
-2.
-3.
-4.
-5.
+1. Quick
+2. Merge
