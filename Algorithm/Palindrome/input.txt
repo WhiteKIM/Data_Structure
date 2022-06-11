@@ -1,0 +1,4 @@
+eye
+palindrome
+madam, i' m Adam
+race car

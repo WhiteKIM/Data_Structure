@@ -1,0 +1,4 @@
+eye: 회문입니다 
+palindrome: 회문이 아닙니다 
+madam, i' m adam: 회문입니다 
+race car: 회문입니다 
